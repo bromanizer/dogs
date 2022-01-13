@@ -54,16 +54,15 @@ class App extends Component {
       <div>
         <Navbar dogs={this.props.dogs} />
         <Routes>
-          <Route exact path="/" element={<DogList dogs={this.props.dogs} />} />
+          <Route path="/dogs" element={<DogList dogs={this.props.dogs} />} />
           {this.props.dogs.map((dog) => (
-            console.log(dog),
             <Route
               exact
               path={`/dogs/${dog.name}`}
               element={<Dog dog={dog}/>}
             />
           ))}
-          <Route render={() => <h1>Error not found</h1>} />
+          <Route path="*" element={<DogList dogs={this.props.dogs} />} />
         </Routes>
       </div>
     );

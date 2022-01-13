@@ -10,15 +10,20 @@ class DogList extends Component {
   }
   render() {
     return (
-      <div className="DogList">
-        {this.props.dogs.map((dog) => (
-          <Link to={`/dogs/${dog.name}`}>
-            <div className='Dog'>
+      <div className="container">
+        <div className="row">
+          {this.props.dogs.map((dog) => (
+            <Link
+              to={`/dogs/${dog.name}`}
+              className="col col-sm-8 col-md-6 col-lg-4 col-xl-3 Dog"
+            >
+              <div className="">
                 <h1>{dog.name}</h1>
-                <img src={dog.src}/>
-            </div>
-          </Link>
-        ))}
+                <img src={dog.src} />
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     );
   }

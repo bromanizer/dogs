@@ -1,7 +1,9 @@
 .navbar {
+    background-color: blue;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
+
 .navbar-active {
     margin: 1em;
     text-decoration: none;
