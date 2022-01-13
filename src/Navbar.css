@@ -1,0 +1,13 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+}
+.navbar-active {
+    margin: 1em;
+    text-decoration: none;
+    color: white;
+}
+
+.active {
+    text-decoration: underline;
+}

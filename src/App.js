@@ -1,25 +1,73 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Navbar from "./Navbar.js";
+import Dog from "./Dog.js";
+import DogList from "./DogList.js";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import whiskey from "./imgs/whiskey.jpg";
+import hazel from "./imgs/hazel.jpg";
+import tubby from "./imgs/tubby.jpg";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  static defaultProps = {
+    dogs: [
+      {
+        name: "Hazel",
+        age: 3,
+        src: hazel,
+        facts: [
+          "Hazel has soooo much energy!",
+          "Hazel is highly intelligent.",
+          "Hazel loves people more than dogs.",
+        ],
+      },
+      {
+        name: "Tubby",
+        age: 4,
+        src: tubby,
+        facts: [
+          "Tubby is not the brightest dog",
+          "Tubby does not like walks or exercise.",
+          "Tubby loves eating food.",
+        ],
+      },
+      {
+        name: "Whiskey",
+        age: 5,
+        src: whiskey,
+        facts: [
+          "Whiskey loves eating popcorn.",
+          "Whiskey is a terrible guard dog.",
+          "Whiskey wants to cuddle with you!",
+        ],
+      },
+    ],
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div>
+        <Navbar dogs={this.props.dogs} />
+        <Routes>
+          <Route exact path="/" element={<DogList dogs={this.props.dogs} />} />
+          {this.props.dogs.map((dog) => (
+            console.log(dog),
+            <Route
+              exact
+              path={`/dogs/${dog.name}`}
+              element={<Dog dog={dog}/>}
+            />
+          ))}
+          <Route render={() => <h1>Error not found</h1>} />
+        </Routes>
+      </div>
+    );
+  }
 }
 
 export default App;
